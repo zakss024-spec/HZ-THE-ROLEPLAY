@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d12">
+  <meta name="description" content="HZ: The Roleplay — dunia roleplay 3D multiplayer.">
+  <title>HZ: The Roleplay</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.80.0"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main id="game-root">
+    <div id="scene"></div>
+
+    <header class="topbar">
+      <a class="brand" href="./">HZ<span>:</span>ROLEPLAY</a>
+      <div class="server-status"><i></i> SERVER ONLINE</div>
+      <button id="logout-btn" class="small-button hidden" type="button">Keluar</button>
+    </header>
+
+    <section id="auth-panel" class="auth-panel">
+      <div class="auth-card">
+        <div class="eyebrow">WELCOME TO THE CITY</div>
+        <h1>HZ: <span>The Roleplay</span></h1>
+        <p class="muted">Masuk atau buat akun untuk bergabung ke kota.</p>
+        <form id="auth-form">
+          <label for="nickname">Nama karakter</label>
+          <input id="nickname" maxlength="24" placeholder="Nama karakter" autocomplete="nickname">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="nama@email.com" autocomplete="email" required>
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Minimal 6 karakter" minlength="6" autocomplete="current-password" required>
+          <div class="auth-actions">
+            <button id="login-btn" class="primary-button" type="submit">Masuk</button>
+            <button id="signup-btn" class="secondary-button" type="button">Buat akun</button>
+          </div>
+        </form>
+        <p id="auth-message" class="notice" role="status"></p>
+        <p class="tiny muted">Jangan gunakan password yang sama dengan akun pentingmu.</p>
+      </div>
+    </section>
+
+    <section id="game-hud" class="game-hud hidden">
+      <div class="welcome-chip">Halo, <strong id="player-name">Player</strong></div>
+      <div class="location-chip"><span class="live-dot"></span> HZ CITY · PUBLIC</div>
+      <div class="controls-help">W A S D untuk bergerak · Space untuk lompat</div>
+      <div class="mobile-controls" aria-label="Kontrol gerak">
+        <button data-move="forward">▲</button>
+        <div>
+          <button data-move="left">◀</button>
+          <button data-move="back">▼</button>
+          <button data-move="right">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <aside id="chat-panel" class="chat-panel hidden">
+      <div class="chat-heading">
+        <div><span class="live-dot"></span> GLOBAL CHAT</div>
+        <span id="chat-count">LIVE</span>
+      </div>
+      <div id="chat-messages" class="chat-messages" aria-live="polite">
+        <p class="chat-empty">Belum ada pesan. Sapa pemain lain!</p>
+      </div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" maxlength="300" placeholder="Tulis pesan..." autocomplete="off" required>
+        <button type="submit" aria-label="Kirim pesan">➤</button>
+      </form>
+      <p id="chat-status" class="chat-status" role="status"></p>
+    </aside>
+
+    <div class="bottom-note">HZ CITY <span>•</span> EARLY DEVELOPMENT BUILD</div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
